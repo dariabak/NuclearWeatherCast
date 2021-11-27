@@ -23,46 +23,60 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/acidRain"
+            app:srcCompat="@drawable/acid_rain"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/maxtemp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
             android:text="6"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="146dp"
-            tools:layout_editor_absoluteY="242dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mintemp_view"
+            app:layout_constraintTop_toBottomOf="@+id/celsius"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/mintemp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="-1"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="253dp"
-            tools:layout_editor_absoluteY="242dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/celsius"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/currenttemp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="2"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/celsius"
-            tools:layout_editor_absoluteY="181dp" />
+            app:layout_constraintTop_toBottomOf="@+id/weather_image" />
 
         <TextView
             android:id="@+id/celsius"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
             android:text="°C"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="181dp" />
+            app:layout_constraintTop_toBottomOf="@+id/weather_image" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

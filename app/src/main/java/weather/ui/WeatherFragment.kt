@@ -32,6 +32,7 @@ interface WeatherFragmentInterface {
 private lateinit var fusedLocationClient: FusedLocationProviderClient
 
 class WeatherFragment: Fragment(), WeatherFragmentInterface {
+    private lateinit var layout: ViewGroup
     private lateinit var interactor: InteractorInterface
     private lateinit var binding: WeatherFragmentLayoutBinding
     private var lon: Double = 0.0
@@ -44,6 +45,7 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
             container,
             false
         )
+        layout = binding.forecastdaysLayout as ViewGroup
         var weatherPresenter: WeatherPresenterInterface = WeatherPresenter(this)
         val queue = Volley.newRequestQueue(context)
         var weatherService: WeatherServiceInterface = WeatherService(queue)
@@ -52,7 +54,7 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         getLastLocation()
-
+        createForecastDayView()
         return binding.root
     }
 
@@ -77,6 +79,12 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
             }
     }
 
+    fun createForecastDayView() {
+        for(i in 0..2) {
+            var day = ForecastDayView(requireContext())
+            layout.addView(day)
+        }
+    }
     override fun updateWeather() {
         TODO("Not yet implemented")
     }

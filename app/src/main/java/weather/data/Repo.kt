@@ -1,11 +1,16 @@
 package weather.data
 
+import weather.business.Forecast
+
 interface RepoInterface {
-    fun getForecast(lon: Double, lat: Double)
+    fun getForecast(lat: Double, lon: Double, handler: (Forecast) -> Unit)
 }
 class Repo( private val service: ServiceInterface): RepoInterface {
 
-    override fun getForecast(lon: Double, lat: Double) {
-        var forecast = service.getForecast(lon, lat)
+    override fun getForecast(lat: Double, lon: Double, handler: (Forecast) -> Unit) {
+        service.getForecast(lat, lon) { forecastDTO ->
+            //....
+
+        }
     }
 }

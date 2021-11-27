@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.nuclearweathercast.R
 import androidx.databinding.DataBindingUtil
+import com.android.volley.toolbox.Volley
 import com.example.nuclearweathercast.databinding.WeatherFragmentLayoutBinding
 import com.google.android.gms.location.*
 import weather.business.Interactor
@@ -44,7 +45,8 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
             false
         )
         var presenter: PresenterInterface = Presenter(this)
-        var service: ServiceInterface = Service()
+        val queue = Volley.newRequestQueue(context)
+        var service: ServiceInterface = Service(queue)
         var repo: RepoInterface = Repo(service)
         interactor = Interactor(presenter, repo)
 
@@ -70,7 +72,7 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
                 Log.d("", "")
                 lon = location?.longitude!!
                 lat = location?.latitude!!
-
+                interactor.getForecast(lat, lon)
 
             }
     }

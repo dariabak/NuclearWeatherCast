@@ -15,12 +15,51 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/city_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="212dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="Manchester"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/zone_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nuclear_zone" />
+
+    <TextView
+        android:id="@+id/country_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="United Kingdom"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/city_view"
+        app:layout_constraintTop_toBottomOf="@+id/city_view" />
+
+    <TextView
+        android:id="@+id/zone_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Nuclear Zone: "
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

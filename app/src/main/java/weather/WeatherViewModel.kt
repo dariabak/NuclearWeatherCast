@@ -1,4 +1,4 @@
 package weather
 
-class WeatherViewModel {
+data class WeatherViewModel(val image: String) {
 }

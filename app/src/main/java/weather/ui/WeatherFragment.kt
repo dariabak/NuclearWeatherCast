@@ -15,17 +15,17 @@ import androidx.databinding.DataBindingUtil
 import com.android.volley.toolbox.Volley
 import com.example.nuclearweathercast.databinding.WeatherFragmentLayoutBinding
 import com.google.android.gms.location.*
-import weather.business.Interactor
+import weather.business.WeatherInteractor
 import weather.business.InteractorInterface
-import weather.business.Presenter
-import weather.business.PresenterInterface
-import weather.data.Repo
+import weather.business.WeatherPresenter
+import weather.business.WeatherPresenterInterface
+import weather.data.WeatherRepo
 import weather.data.RepoInterface
-import weather.data.Service
-import weather.data.ServiceInterface
+import weather.data.WeatherService
+import weather.data.WeatherServiceInterface
 
 interface WeatherFragmentInterface {
-
+    fun updateWeather()
 }
 
 
@@ -44,11 +44,11 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
             container,
             false
         )
-        var presenter: PresenterInterface = Presenter(this)
+        var weatherPresenter: WeatherPresenterInterface = WeatherPresenter(this)
         val queue = Volley.newRequestQueue(context)
-        var service: ServiceInterface = Service(queue)
-        var repo: RepoInterface = Repo(service)
-        interactor = Interactor(presenter, repo)
+        var weatherService: WeatherServiceInterface = WeatherService(queue)
+        var repo: RepoInterface = WeatherRepo(weatherService)
+        interactor = WeatherInteractor(weatherPresenter, repo)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         getLastLocation()
@@ -77,4 +77,7 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
             }
     }
 
+    override fun updateWeather() {
+        TODO("Not yet implemented")
+    }
 }

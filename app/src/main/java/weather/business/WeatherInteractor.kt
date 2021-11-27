@@ -12,7 +12,7 @@ class WeatherInteractor(private val weatherPresenter: WeatherPresenterInterface,
         }
     }
     private fun updateForecast(weather: Weather) {
-
+        weatherPresenter.updateWeather(weather)
     }
 
 }

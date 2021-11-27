@@ -1,4 +1,5 @@
 package weather
 
-data class WeatherViewModel(val image: String) {
+data class WeatherViewModel(val max: String, val min: String) {
+
 }

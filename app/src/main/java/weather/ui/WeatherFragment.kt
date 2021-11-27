@@ -9,12 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.example.nuclearweathercast.R
 import androidx.databinding.DataBindingUtil
 import com.android.volley.toolbox.Volley
 import com.example.nuclearweathercast.databinding.WeatherFragmentLayoutBinding
 import com.google.android.gms.location.*
+import weather.WeatherViewModel
 import weather.business.WeatherInteractor
 import weather.business.InteractorInterface
 import weather.business.WeatherPresenter
@@ -25,7 +27,7 @@ import weather.data.WeatherService
 import weather.data.WeatherServiceInterface
 
 interface WeatherFragmentInterface {
-    fun updateWeather()
+    fun updateWeather(viewModel: WeatherViewModel, index: Int)
 }
 
 
@@ -35,6 +37,7 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
     private lateinit var layout: ViewGroup
     private lateinit var interactor: InteractorInterface
     private lateinit var binding: WeatherFragmentLayoutBinding
+    private var forecastDayArrayList: ArrayList<ForecastDayView> = ArrayList<ForecastDayView>()
     private var lon: Double = 0.0
     private var lat: Double = 0.0
 
@@ -73,7 +76,7 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
             .addOnSuccessListener { location : Location? ->
                 Log.d("", "")
                 lon = location?.longitude!!
-                lat = location?.latitude!!
+                lat = location.latitude
                 interactor.getForecast(lat, lon)
 
             }
@@ -82,10 +85,11 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
     fun createForecastDayView() {
         for(i in 0..2) {
             var day = ForecastDayView(requireContext())
+            forecastDayArrayList.add(day)
             layout.addView(day)
         }
     }
-    override fun updateWeather() {
-        TODO("Not yet implemented")
+    override fun updateWeather(viewModel: WeatherViewModel, index: Int) {
+        forecastDayArrayList[index].update(viewModel)
     }
 }

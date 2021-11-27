@@ -17,6 +17,7 @@ class ForecastDayView(context: Context): ConstraintLayout(context) {
     fun update(forecastViewModel: WeatherViewModel) {
         binding.maxtempView.text = forecastViewModel.max
         binding.mintempView.text = forecastViewModel.min
+        binding.dateView.text = forecastViewModel.date
     }
 
 }

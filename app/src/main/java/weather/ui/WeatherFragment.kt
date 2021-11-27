@@ -28,6 +28,7 @@ import weather.data.WeatherServiceInterface
 
 interface WeatherFragmentInterface {
     fun updateWeather(viewModel: WeatherViewModel, index: Int)
+    fun updateCityAndCountry(city: String, country: String)
 }
 
 
@@ -91,5 +92,10 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
     }
     override fun updateWeather(viewModel: WeatherViewModel, index: Int) {
         forecastDayArrayList[index].update(viewModel)
+    }
+
+    override fun updateCityAndCountry(city: String, country: String) {
+        binding.cityView.text = city
+        binding.countryView.text = country
     }
 }

@@ -5,11 +5,11 @@ import weather.data.WeatherDTO
 
 class Weather {
     constructor(weatherDTO: WeatherDTO) {
-        this.name = weatherDTO.location.name
+        this.city = weatherDTO.location.name
         this.country = weatherDTO.location.country
         this.forecast = weatherDTO.forecast.forecastday.map {Forecast(it)}.toCollection(java.util.ArrayList())
     }
-    var name: String = ""
+    var city: String = ""
     var country: String = ""
     var forecast: ArrayList<Forecast> = ArrayList<Forecast>()
 }

@@ -51,6 +51,7 @@ class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherP
 
             fragment.updateHoursTemp(weather.forecast[i].hours, i)
         }
+        fragment.hideLoadingView()
 
     }
 

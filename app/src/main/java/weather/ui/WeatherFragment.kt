@@ -28,6 +28,7 @@ interface WeatherFragmentInterface {
     fun updateCityAndCountry(city: String, country: String)
     fun updateHoursTemp(hours: ArrayList<Hour>, index: Int)
     fun createForecastDayView()
+    fun hideLoadingView()
 }
 
 
@@ -101,6 +102,12 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
 
     override fun updateHoursTemp(hours: ArrayList<Hour>, index: Int) {
         forecastDayArrayList[index].createHoursView(hours)
+    }
+
+    override fun hideLoadingView() {
+        binding.cityView.visibility = View.VISIBLE
+        binding.countryView.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.GONE
     }
 
 }

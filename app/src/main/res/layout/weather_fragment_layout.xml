@@ -50,7 +50,7 @@
                 android:id="@+id/zone_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="12dp"
                 android:text="Nuclear Zone: "
                 android:textSize="20sp"

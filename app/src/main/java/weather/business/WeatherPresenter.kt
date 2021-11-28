@@ -32,8 +32,8 @@ class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherP
             } else {
                 date = weather.forecast[i].date
             }
-            var maxtemp = weather.forecast.get(i).maxtemp.toString()
-            var mintemp = weather.forecast.get(i).mintemp.toString()
+            var maxtemp: String = "H: " + weather.forecast.get(i).maxtemp.toString() + "°C"
+            var mintemp: String = "L: " + weather.forecast.get(i).mintemp.toString() + "°C"
 
             var img = checkWhatImage(weather.forecast[i].img)
             if(img == "rain") {

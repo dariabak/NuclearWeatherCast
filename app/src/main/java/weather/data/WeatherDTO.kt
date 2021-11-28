@@ -35,6 +35,9 @@ class ForecastDayDTO {
     @SerializedName("day")
     var day: DayDTO = DayDTO()
 
+    @SerializedName("hour")
+    var hours: ArrayList<HourDTO> = ArrayList<HourDTO>()
+
 }
 class DayDTO {
     @SerializedName("maxtemp_c")
@@ -55,4 +58,8 @@ class DayDTO {
 class ConditionDTO {
     @SerializedName("text")
     var title: String = ""
+}
+class HourDTO {
+    @SerializedName("temp_c")
+    var hour_temp_c: Float = 0f
 }

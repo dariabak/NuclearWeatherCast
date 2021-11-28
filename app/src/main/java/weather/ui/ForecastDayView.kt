@@ -23,9 +23,8 @@ class ForecastDayView(context: Context): ConstraintLayout(context) {
         binding.maxtempView.text = forecastViewModel.max
         binding.mintempView.text = forecastViewModel.min
         binding.dateView.text = forecastViewModel.date
-        val res: Resources = resources
         val img = forecastViewModel.img
-        val resID = context.getResources().getIdentifier("drawable/" + img, null, context.getPackageName());
+        val resID = context.resources.getIdentifier("drawable/" + img, null, context.getPackageName());
         binding.weatherImage.setImageResource(resID)
         binding.forecastDescView.text = forecastViewModel.desc
     }

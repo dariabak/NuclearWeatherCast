@@ -42,7 +42,8 @@ class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherP
                 img = "snowy"
             }
 
-            var viewModel = WeatherViewModel(maxtemp, mintemp, date, img)
+            var desc = weather.forecast[i].img
+            var viewModel = WeatherViewModel(maxtemp, mintemp, date, img, desc)
             fragment.updateWeather(viewModel, i)
         }
         fragment.updateCityAndCountry(weather.city, weather.country)

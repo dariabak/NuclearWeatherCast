@@ -27,6 +27,7 @@ class ForecastDayView(context: Context): ConstraintLayout(context) {
         val img = forecastViewModel.img
         val resID = context.getResources().getIdentifier("drawable/" + img, null, context.getPackageName());
         binding.weatherImage.setImageResource(resID)
+        binding.forecastDescView.text = forecastViewModel.desc
     }
 
 }

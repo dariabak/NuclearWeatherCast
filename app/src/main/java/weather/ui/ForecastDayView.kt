@@ -35,8 +35,8 @@ class ForecastDayView(context: Context): ConstraintLayout(context) {
      fun createHoursView(hours: ArrayList<Hour>) {
          hours.forEach{ it ->
              var hour = HourView(context)
-             hour.updateHour(it.hour)
-             hour.updateTime(it.temp_c)
+             hour.updateHour(it.hour.toString())
+             hour.updateTime(it.temp_c.toString() + "°C")
              hoursArrayList.add(hour)
              groupLayout.addView(hour)
          }

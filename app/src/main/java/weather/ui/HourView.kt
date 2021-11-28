@@ -16,7 +16,7 @@ class HourView(context: Context): ConstraintLayout(context) {
     fun updateHour(hour: String) {
         binding.timeView.text = hour
     }
-    fun updateTime(temp: Float) {
-        binding.tempView.text = temp.toString()
+    fun updateTime(temp: String) {
+        binding.tempView.text = temp
     }
 }

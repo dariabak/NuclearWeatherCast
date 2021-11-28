@@ -9,15 +9,19 @@ import com.example.nuclearweathercast.R
 import com.example.nuclearweathercast.databinding.ForecastDayLayoutBinding
 import weather.WeatherViewModel
 import android.graphics.drawable.Drawable
-
-
+import android.view.View
+import android.view.ViewGroup
+import weather.business.Hour
 
 
 class ForecastDayView(context: Context): ConstraintLayout(context) {
     private var binding: ForecastDayLayoutBinding
+    private lateinit var groupLayout: ViewGroup
+    private var hoursArrayList = ArrayList<HourView>()
     init {
         val inflater: LayoutInflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.forecast_day_layout,this , true)
+        groupLayout = binding.hoursLayout as ViewGroup
     }
     fun update(forecastViewModel: WeatherViewModel) {
         binding.maxtempView.text = forecastViewModel.max
@@ -28,5 +32,13 @@ class ForecastDayView(context: Context): ConstraintLayout(context) {
         binding.weatherImage.setImageResource(resID)
         binding.forecastDescView.text = forecastViewModel.desc
     }
-
+     fun createHoursView(hours: ArrayList<Hour>) {
+         hours.forEach{ it ->
+             var hour = HourView(context)
+             hour.updateHour(it.hour)
+             hour.updateTime(it.temp_c)
+             hoursArrayList.add(hour)
+             groupLayout.addView(hour)
+         }
+    }
 }

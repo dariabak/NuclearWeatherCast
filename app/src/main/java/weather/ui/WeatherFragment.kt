@@ -17,10 +17,7 @@ import com.android.volley.toolbox.Volley
 import com.example.nuclearweathercast.databinding.WeatherFragmentLayoutBinding
 import com.google.android.gms.location.*
 import weather.WeatherViewModel
-import weather.business.WeatherInteractor
-import weather.business.InteractorInterface
-import weather.business.WeatherPresenter
-import weather.business.WeatherPresenterInterface
+import weather.business.*
 import weather.data.WeatherRepo
 import weather.data.RepoInterface
 import weather.data.WeatherService
@@ -29,6 +26,7 @@ import weather.data.WeatherServiceInterface
 interface WeatherFragmentInterface {
     fun updateWeather(viewModel: WeatherViewModel, index: Int)
     fun updateCityAndCountry(city: String, country: String)
+    fun updateHoursTemp(hours: ArrayList<Hour>, index: Int)
 }
 
 
@@ -97,5 +95,9 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
     override fun updateCityAndCountry(city: String, country: String) {
         binding.cityView.text = city
         binding.countryView.text = country
+    }
+
+    override fun updateHoursTemp(hours: ArrayList<Hour>, index: Int) {
+        forecastDayArrayList[index].createHoursView(hours)
     }
 }

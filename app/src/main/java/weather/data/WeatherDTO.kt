@@ -62,4 +62,7 @@ class ConditionDTO {
 class HourDTO {
     @SerializedName("temp_c")
     var hour_temp_c: Float = 0f
+
+    @SerializedName("time")
+    var time: String = ""
 }

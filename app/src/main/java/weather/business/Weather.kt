@@ -1,7 +1,9 @@
 package weather.business
 
 import weather.data.ForecastDayDTO
+import weather.data.HourDTO
 import weather.data.WeatherDTO
+import java.text.SimpleDateFormat
 
 class Weather {
     constructor(weatherDTO: WeatherDTO) {
@@ -21,6 +23,7 @@ class Forecast() {
         this.maxwind = forecastDayDTO.day.maxwind
         this.chanceOfRain = forecastDayDTO.day.chanceOfRain
         this.img = forecastDayDTO.day.condition.title
+        this.hours = forecastDayDTO.hours.map { Hour(it)}.toCollection(java.util.ArrayList())
     }
     var date: String = ""
     var maxtemp: Float = 0f
@@ -29,4 +32,13 @@ class Forecast() {
     var wind_dir: String = ""
     var chanceOfRain: Int = 0
     var img: String = ""
+    var hours: ArrayList<Hour> = ArrayList<Hour>()
+}
+class Hour {
+    constructor(hourDTO: HourDTO) {
+        this.temp_c = hourDTO.hour_temp_c
+        this.hour = hourDTO.time.takeLast(5)
+    }
+    var hour: String = ""
+    var temp_c: Float = 0f
 }

@@ -46,7 +46,8 @@ class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherP
 
             var desc = weather.forecast[i].img
             var maxwind = "Max wind: " + weather.forecast[i].maxwind + "mph"
-            var viewModel = WeatherViewModel(maxtemp, mintemp, date, img, desc, maxwind)
+            var chanceOfRain = "Chance of rain: " + weather.forecast[i].chanceOfRain.toString() + "%"
+            var viewModel = WeatherViewModel(maxtemp, mintemp, date, img, desc, maxwind, chanceOfRain)
             fragment.updateWeather(viewModel, i)
 
             fragment.updateHoursTemp(weather.forecast[i].hours, i)

@@ -32,6 +32,7 @@ class ForecastDayView(context: Context): ConstraintLayout(context) {
         binding.weatherImage.setImageResource(resID)
         binding.forecastDescView.text = forecastViewModel.desc
         binding.maxwindView.text = forecastViewModel.maxwind
+        binding.chanceOfRainView.text = forecastViewModel.chanceOfRain
     }
      fun createHoursView(hours: ArrayList<Hour>) {
          hours.forEach{ it ->

@@ -5,6 +5,18 @@ import weather.ui.WeatherFragmentInterface
 import java.text.SimpleDateFormat
 import java.util.*
 
+enum class WeatherImage {
+    SUNNY,
+    PARTLY_RAINY,
+    MIST,
+    RAIN,
+    SLEET,
+    CLOUDY,
+    PARTLY_CLOUDY,
+    SNOW,
+    THUNDER
+
+}
 interface WeatherPresenterInterface {
     fun updateWeather(weather: Weather)
 }
@@ -22,9 +34,27 @@ class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherP
             }
             var maxtemp = weather.forecast.get(i).maxtemp.toString()
             var mintemp = weather.forecast.get(i).mintemp.toString()
-            var viewModel = WeatherViewModel(maxtemp, mintemp, date)
+
+            var img = checkWhatImage(weather.forecast[i].img)
+            if(img == "rain") {
+                img = "rainy"
+            } else if (img == "snow") {
+                img = "snowy"
+            }
+
+            var viewModel = WeatherViewModel(maxtemp, mintemp, date, img)
             fragment.updateWeather(viewModel, i)
         }
         fragment.updateCityAndCountry(weather.city, weather.country)
+    }
+
+    private fun checkWhatImage(title: String): String {
+        val weather = enumValues<WeatherImage>()
+        weather.forEach { it ->
+            if(title.contains(it.toString().lowercase())){
+                return it.toString().lowercase()
+            }
+        }
+        return ""
     }
 }

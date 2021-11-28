@@ -11,13 +11,16 @@
         android:theme="@style/Theme.NuclearWeatherCast">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:largeHeap="true"
+            android:hardwareAccelerated="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
     <!-- Always include this permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -25,4 +28,5 @@
     <!-- Include only if your app benefits from precise location access. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

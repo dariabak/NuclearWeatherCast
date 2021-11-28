@@ -48,4 +48,11 @@ class DayDTO {
 
     @SerializedName("daily_chance_of_rain")
     var chanceOfRain: Int = 0
+
+    @SerializedName("condition")
+    var condition: ConditionDTO = ConditionDTO()
+}
+class ConditionDTO {
+    @SerializedName("text")
+    var title: String = ""
 }

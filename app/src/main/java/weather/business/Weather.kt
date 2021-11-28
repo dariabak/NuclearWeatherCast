@@ -20,6 +20,7 @@ class Forecast() {
         this.mintemp = forecastDayDTO.day.mintemp
         this.maxwind = forecastDayDTO.day.maxwind
         this.chanceOfRain = forecastDayDTO.day.chanceOfRain
+        this.img = forecastDayDTO.day.condition.title
     }
     var date: String = ""
     var maxtemp: Float = 0f
@@ -27,4 +28,5 @@ class Forecast() {
     var maxwind: Float = 0f
     var wind_dir: String = ""
     var chanceOfRain: Int = 0
+    var img: String = ""
 }

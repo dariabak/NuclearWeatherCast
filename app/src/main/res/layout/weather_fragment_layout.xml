@@ -20,7 +20,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="16dp"
+                android:background="#020000"
                 android:text="Manchester"
+                android:textColor="@color/yellow"
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/zone_text"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,9 +41,10 @@
                 android:id="@+id/country_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
                 android:layout_marginTop="4dp"
+                android:background="#040000"
                 android:text="United Kingdom"
+                android:textColor="@color/yellow"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/city_view"
                 app:layout_constraintTop_toBottomOf="@+id/city_view" />

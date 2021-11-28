@@ -4,6 +4,7 @@ import weather.data.ForecastDayDTO
 import weather.data.HourDTO
 import weather.data.WeatherDTO
 import java.text.SimpleDateFormat
+import kotlin.math.round
 
 class Weather {
     constructor(weatherDTO: WeatherDTO) {
@@ -20,19 +21,19 @@ class Forecast() {
         this.date = forecastDayDTO.date
         this.maxtemp = forecastDayDTO.day.maxtemp
         this.mintemp = forecastDayDTO.day.mintemp
-        this.maxwind = forecastDayDTO.day.maxwind
         this.chanceOfRain = forecastDayDTO.day.chanceOfRain
         this.img = forecastDayDTO.day.condition.title
+        this.maxwind = round(forecastDayDTO.day.maxwind).toInt()
         this.hours = forecastDayDTO.hours.map { Hour(it)}.toCollection(java.util.ArrayList())
     }
     var date: String = ""
     var maxtemp: Float = 0f
     var mintemp: Float = 0f
-    var maxwind: Float = 0f
-    var wind_dir: String = ""
+    var maxwind: Int = 0
     var chanceOfRain: Int = 0
     var img: String = ""
     var hours: ArrayList<Hour> = ArrayList<Hour>()
+
 }
 class Hour {
     constructor(hourDTO: HourDTO) {

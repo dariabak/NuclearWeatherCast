@@ -22,6 +22,8 @@ interface WeatherPresenterInterface {
 }
 class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherPresenterInterface {
     override fun updateWeather(weather: Weather) {
+        fragment.updateCityAndCountry(weather.city, weather.country)
+        fragment.createForecastDayView()
         for(i in 0 until weather.forecast.size) {
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             val currentDate = sdf.format(Date())
@@ -32,8 +34,8 @@ class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherP
             } else {
                 date = weather.forecast[i].date
             }
-            var maxtemp: String = "H: " + weather.forecast.get(i).maxtemp.toString() + "°C"
-            var mintemp: String = "L: " + weather.forecast.get(i).mintemp.toString() + "°C"
+            var maxtemp: String = "H: " + weather.forecast[i].maxtemp.toString() + "°C"
+            var mintemp: String = "L: " + weather.forecast[i].mintemp.toString() + "°C"
 
             var img = checkWhatImage(weather.forecast[i].img)
             if(img == "rain") {
@@ -43,12 +45,13 @@ class WeatherPresenter(private val fragment: WeatherFragmentInterface): WeatherP
             }
 
             var desc = weather.forecast[i].img
-            var viewModel = WeatherViewModel(maxtemp, mintemp, date, img, desc)
+            var maxwind = "Max wind: " + weather.forecast[i].maxwind + "mph"
+            var viewModel = WeatherViewModel(maxtemp, mintemp, date, img, desc, maxwind)
             fragment.updateWeather(viewModel, i)
 
             fragment.updateHoursTemp(weather.forecast[i].hours, i)
         }
-        fragment.updateCityAndCountry(weather.city, weather.country)
+
     }
 
     private fun checkWhatImage(title: String): String {

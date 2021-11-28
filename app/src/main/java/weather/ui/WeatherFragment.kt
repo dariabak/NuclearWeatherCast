@@ -27,6 +27,7 @@ interface WeatherFragmentInterface {
     fun updateWeather(viewModel: WeatherViewModel, index: Int)
     fun updateCityAndCountry(city: String, country: String)
     fun updateHoursTemp(hours: ArrayList<Hour>, index: Int)
+    fun createForecastDayView()
 }
 
 
@@ -41,6 +42,10 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
     private var lat: Double = 0.0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        getLastLocation()
+
+
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.weather_fragment_layout,
@@ -54,9 +59,6 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
         var repo: RepoInterface = WeatherRepo(weatherService)
         interactor = WeatherInteractor(weatherPresenter, repo)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-        getLastLocation()
-        createForecastDayView()
         return binding.root
     }
 
@@ -81,7 +83,7 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
             }
     }
 
-    fun createForecastDayView() {
+    override fun createForecastDayView() {
         for(i in 0..2) {
             var day = ForecastDayView(requireContext())
             forecastDayArrayList.add(day)
@@ -100,4 +102,5 @@ class WeatherFragment: Fragment(), WeatherFragmentInterface {
     override fun updateHoursTemp(hours: ArrayList<Hour>, index: Int) {
         forecastDayArrayList[index].createHoursView(hours)
     }
+
 }

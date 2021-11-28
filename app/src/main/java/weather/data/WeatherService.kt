@@ -22,7 +22,7 @@ class WeatherService(private var queue: RequestQueue): WeatherServiceInterface {
                 var weatherDTO: WeatherDTO = gson.fromJson(string, weatherDtoType)
                 handler.invoke(weatherDTO)
 
-            }, { error ->
+            }, { _ ->
                 Log.e("WeatherService", "Error")
             }
         )
